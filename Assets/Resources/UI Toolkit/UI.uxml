@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ShieldStrength" src="project://database/Assets/Resources/UI%20Toolkit/Templates/ShieldStrength/ShieldStrength.uxml?fileID=9197481963319205126&amp;guid=737bb67abe65ea245be6e09733d0b5d8&amp;type=3#ShieldStrength" />
+    <ui:Template name="CurrentTaskStyle" src="project://database/Assets/Resources/UI%20Toolkit/Templates/TaskStyle/CurrentTaskStyle.uxml?fileID=9197481963319205126&amp;guid=9492f7d0e80b8394abd8aacbeb8440a5&amp;type=3#CurrentTaskStyle" />
+    <Style src="project://database/Assets/Resources/UI%20Toolkit/Style.uss?fileID=7433441132597879392&amp;guid=7c88507385743c94a84395b56297dd1d&amp;type=3#Style" />
+    <ui:VisualElement name="Header" style="flex-direction: row; justify-content: space-between; height: 10%; align-items: center;">
+        <ui:VisualElement style="width: 10%; height: 100%;">
+            <ui:Label tabindex="-1" text="$0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Money" style="color: rgb(255, 255, 255); font-size: 24px; -unity-text-align: middle-left; display: flex;" />
+        </ui:VisualElement>
+        <ui:Instance template="ShieldStrength" name="ShieldStrength" style="height: 100%; width: 60%; justify-content: center; align-items: center;" />
+        <ui:VisualElement style="width: 10%; height: 100%;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Game" style="height: 80%; width: 100%; flex-direction: row; justify-content: space-between; display: flex;">
+        <ui:VisualElement>
+            <TabButton focusable="true" />
+        </ui:VisualElement>
+        <ui:VisualElement class="task-menu-hidden task-menu-visible">
+            <ui:Label text="Tasks" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; height: 10%; color: rgb(67, 67, 67);" />
+            <ui:Instance template="CurrentTaskStyle" name="CurrentTaskStyle" style="height: 40%;" />
+            <ui:ListView name="TaskList" virtualization-method="DynamicHeight" selection-type="None" style="height: 100%; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; background-color: rgb(58, 58, 58); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-left-color: rgb(51, 51, 51); border-right-color: rgb(51, 51, 51); border-top-color: rgb(51, 51, 51); border-bottom-color: rgb(51, 51, 51); display: flex; visibility: visible; overflow: visible; transition-duration: 1s;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

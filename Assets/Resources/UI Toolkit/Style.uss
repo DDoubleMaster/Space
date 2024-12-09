@@ -1,0 +1,32 @@
+.task-menu-hidden {
+    width: 30%;
+    background-color: rgb(63, 63, 63);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    translate: 100% 0;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out-cubic;
+}
+
+.task-menu-visible {
+    translate: 0 0;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out-cubic;
+}
+
+#TaskList TemplateContainer:hover {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hide-current-menu {
+    translate: 100% 0;
+}
