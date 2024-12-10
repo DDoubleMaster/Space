@@ -92,6 +92,7 @@ public class TaskManager : MonoBehaviour
 
     [SerializeField] VisualTreeAsset taskStyle;
 
+    public ListView UI_taskListView;
     VisualElement UI_currentTask;
 
 	public TaskObject currentTask;
@@ -107,7 +108,7 @@ public class TaskManager : MonoBehaviour
         UI_currentTask = root.Q<VisualElement>("CurrentTaskStyle");
         UI_currentTask.style.display = DisplayStyle.None;
 
-		ListView UI_taskListView = root.Q<ListView>("TaskList");
+		UI_taskListView = root.Q<ListView>("TaskList");
         UI_taskListView.itemsSource = tasks;
         UI_taskListView.makeItem = () =>
         {
@@ -309,6 +310,7 @@ public class TaskManager : MonoBehaviour
                     arrow.Clear();
                     taskManager.currentTask = null;
                     taskManager.tasks.Add(new TaskObject());
+                    taskManager.UI_taskListView.Rebuild();
                     currentStep = step.initial;
                 }
             }

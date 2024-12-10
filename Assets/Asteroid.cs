@@ -48,7 +48,7 @@ public class Asteroid : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-        taskManager.AddMoney(((100 - chance) / 4) * (int)transform.localScale.x);
+        taskManager.AddMoney((100 - chance) / 4 * (int)transform.localScale.x);
 		Destroy(gameObject);
 	}
 }
