@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
         //  Asteroid Movement
         transform.localScale = Vector3.Lerp(transform.localScale, resultScale, 2f * Time.deltaTime);
         transform.Translate(direction * Time.deltaTime * (5 / transform.localScale.x));
-        transform.Rotate(direction * (5 / transform.localScale.x));
+        transform.Rotate(direction * Time.deltaTime * 60 * (5 / transform.localScale.x));
 
         // Destroy Asteroid if he is on camera
         if (!_render.isVisible)

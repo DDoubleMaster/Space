@@ -158,9 +158,22 @@ public class TaskManager : MonoBehaviour
         OnMoneyChanged += delegate { UI_Money_Label.text = $"${PlayerPrefs.GetInt("Money")}"; };
     }
 
+    float currentTimeScale = 1;
     private void Update()
     {
-        if(currentTask != null)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentTimeScale == 0)
+            {
+                currentTimeScale = 1;
+                Time.timeScale += 0.05f;
+            }
+            else currentTimeScale = 0;
+        }
+        Time.timeScale = Mathf.MoveTowards(Time.timeScale, currentTimeScale, Time.deltaTime * 5);
+
+
+        if (currentTask != null)
             currentTask.LaunchTask();
 
         if(currentTask == null && UI_currentTask.style.display == DisplayStyle.Flex)
