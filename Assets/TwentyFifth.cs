@@ -16,15 +16,21 @@ public class TwentyFifth : MonoBehaviour
 
 	void Update()
     {
-		if (Input.GetAxis("Attach") != 0 && !IsInvoking("LeftAttach") && !IsInvoking("RightAttach"))
+		if (Input.GetKey(KeyCode.Space) && !IsInvoking("LeftAttach") && !IsInvoking("RightAttach"))
 			Invoke("LeftAttach", 1);
-		else if (Input.GetAxis("Attach") == 0)
-			CancelInvoke();
+		else if (!Input.GetKey(KeyCode.Space)) CancelInvoke();
 
-		float horizontal = Input.GetAxis("Horizontal") * 20;
+        float horizontal = Input.GetAxis("Horizontal") * 20;
 		float vertical = Input.GetAxis("Vertical") * 20;
-		leftWing.transform.localRotation = Quaternion.Euler(horizontal + vertical, 0, 0);
-        rightWing.transform.localRotation = Quaternion.Euler(-horizontal + vertical, 0, 0);
+
+		Quaternion leftWingFinalRotate = Quaternion.Euler(horizontal + vertical, 0, 0);
+		Quaternion rightWingFinalRotate = Quaternion.Euler(-horizontal + vertical, 0, 0);
+
+		Quaternion leftWingCurrentRotate = leftWing.transform.localRotation;
+		Quaternion rightWingCurrentRotate = rightWing.transform.localRotation;
+
+		leftWing.transform.localRotation = Quaternion.Lerp(leftWingCurrentRotate, leftWingFinalRotate, Time.deltaTime * 5);
+		rightWing.transform.localRotation = Quaternion.Lerp(rightWingCurrentRotate, rightWingFinalRotate, Time.deltaTime * 5);
     }
 
     void LeftAttach()
@@ -32,12 +38,12 @@ public class TwentyFifth : MonoBehaviour
         Quaternion direction = Quaternion.LookRotation(left.transform.forward);
         GameObject thisBullet = Instantiate(bullet, left.transform.position, direction);
 
-        Invoke("RightAttach", 0.1f);
+        Invoke("RightAttach", 0.2f);
     }
 
 	void RightAttach()
 	{
 		Instantiate(bullet, right.transform.position, transform.rotation);
-		Invoke("LeftAttach", 0.1f);
+		Invoke("LeftAttach", 0.2f);
 	}
 }

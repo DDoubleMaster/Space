@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1109f00541903a488855b94c102ca1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chance: 30
+  chance: 25
   taskManager: {fileID: 0}
 --- !u!1001 &797804568059547149
 PrefabInstance:
