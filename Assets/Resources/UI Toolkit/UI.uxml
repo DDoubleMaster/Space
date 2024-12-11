@@ -10,7 +10,9 @@
         <ui:VisualElement style="width: 10%; height: 100%;" />
     </ui:VisualElement>
     <ui:VisualElement name="Game" style="height: 80%; width: 100%; flex-direction: row; justify-content: space-between; display: flex;">
-        <ui:VisualElement name="PauseMenuContainer" style="transition-duration: 1s; transition-timing-function: ease-in-out-cubic;" />
+        <ui:VisualElement name="PauseMenuContainer" style="transition-duration: 1s; transition-timing-function: ease-in-out-cubic; justify-content: center; align-items: center;">
+            <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" class="button" style="width: 119px;" />
+        </ui:VisualElement>
         <ui:VisualElement name="TaskListContainer" class="task-menu-hidden" style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; width: 30%; background-color: rgb(63, 63, 63); margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; transition-timing-function: ease-in-out-cubic; transition-duration: 1s;">
             <ui:Label text="Tasks" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; height: 10%; color: rgb(27, 27, 27);" />
             <ui:Instance template="CurrentTaskStyle" name="CurrentTaskStyle" style="height: 40%;" />

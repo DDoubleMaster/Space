@@ -187,14 +187,14 @@ public class TaskManager : MonoBehaviour
         {
             if (currentTimeScale == 0)
             {
-                UI_TaskListContainer.RemoveFromClassList("task-menu-visible");
                 currentTimeScale = 1;
                 Time.timeScale += 0.05f;
+                UI_TaskListContainer.AddToClassList("task-menu-hidden");
             }
             else
             {
                 currentTimeScale = 0;
-                UI_TaskListContainer.AddToClassList("task-menu-visible");
+                UI_TaskListContainer.RemoveFromClassList("task-menu-hidden");
             }
         }
         Time.timeScale = Mathf.MoveTowards(Time.timeScale, currentTimeScale, Time.deltaTime * 5);
@@ -303,7 +303,7 @@ public class TaskManager : MonoBehaviour
 
                 arrow.Rotate(player, unLoadingCenter);
 
-                if (distance < 20)
+                if (distance < 50)
                     currentStep = step.two;
             }
 
@@ -313,7 +313,7 @@ public class TaskManager : MonoBehaviour
 
 				arrow.Rotate(player, loadingCenter);
 
-				if (distance < 20)
+				if (distance < 50)
                 {
                     int award = task.Award;
                     taskManager.AddMoney(award);

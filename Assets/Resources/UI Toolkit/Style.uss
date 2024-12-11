@@ -2,12 +2,6 @@
     translate: 100% 0;
 }
 
-.task-menu-visible {
-    translate: 0 0;
-    transition-duration: 1s;
-    transition-timing-function: ease-in-out-cubic;
-}
-
 #TaskList TemplateContainer:hover {
     display: flex;
     opacity: 1;

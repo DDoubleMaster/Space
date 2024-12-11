@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
 	void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + -transform.forward, 10);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + -transform.forward, 100 * Time.deltaTime);
     }
 
 	private void Destroy()
