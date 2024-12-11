@@ -93,6 +93,7 @@ public class TaskManager : MonoBehaviour
     [SerializeField] VisualTreeAsset taskStyle;
 
     public ListView UI_taskListView;
+    VisualElement UI_TaskListContainer;
     VisualElement UI_currentTask;
 
 	public TaskObject currentTask;
@@ -104,6 +105,8 @@ public class TaskManager : MonoBehaviour
             tasks.Add(new TaskObject());
 
         VisualElement root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
+
+        UI_TaskListContainer = root.Q<VisualElement>("TaskListContainer");
 
         UI_currentTask = root.Q<VisualElement>("CurrentTaskStyle");
         UI_currentTask.style.display = DisplayStyle.None;
@@ -159,20 +162,9 @@ public class TaskManager : MonoBehaviour
         OnMoneyChanged += delegate { UI_Money_Label.text = $"${PlayerPrefs.GetInt("Money")}"; };
     }
 
-    float currentTimeScale = 1;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (currentTimeScale == 0)
-            {
-                currentTimeScale = 1;
-                Time.timeScale += 0.05f;
-            }
-            else currentTimeScale = 0;
-        }
-        Time.timeScale = Mathf.MoveTowards(Time.timeScale, currentTimeScale, Time.deltaTime * 5);
-
+        Pause();
 
         if (currentTask != null)
             currentTask.LaunchTask();
@@ -187,6 +179,26 @@ public class TaskManager : MonoBehaviour
             UI_currentTask.Q<Label>("Award").text = currentTask.Award.ToString();
 		}
 	}
+
+    float currentTimeScale = 1;
+    private void Pause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (currentTimeScale == 0)
+            {
+                UI_TaskListContainer.RemoveFromClassList("task-menu-visible");
+                currentTimeScale = 1;
+                Time.timeScale += 0.05f;
+            }
+            else
+            {
+                currentTimeScale = 0;
+                UI_TaskListContainer.AddToClassList("task-menu-visible");
+            }
+        }
+        Time.timeScale = Mathf.MoveTowards(Time.timeScale, currentTimeScale, Time.deltaTime * 5);
+    }
 
     public event System.Action OnMoneyChanged;
     public void AddMoney(int amount)
