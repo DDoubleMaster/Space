@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,13 +17,11 @@ public class MainMenu : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
 
         foreach(VisualElement child in root.Children())
-        {
             windows.Add(child.name, child);
-        }
 
         #region Menu Buttons
         Button playButton = windows["Menu"].Q<Button>("PlayButton");
-        playButton.clicked +=  delegate { SceneManager.LoadScene("Game"); };
+        playButton.clicked += delegate { PlayAction(); };
         Button settingButton = windows["Menu"].Q<Button>("SettingButton");
         settingButton.clicked += delegate { ChangeWindow("Setting"); };
         Button exitButton = windows["Menu"].Q<Button>("ExitButton");
@@ -36,12 +35,26 @@ public class MainMenu : MonoBehaviour
         #endregion
     }
 
+    void PlayAction()
+    {
+        foreach (VisualElement child in root.Children())
+            child.AddToClassList("hide-current-window");
+
+        currentPos = new Vector3(0, 1, 100);
+        Invoke("TempMove", 3);
+    }
+
+    void TempMove()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
     string currentWindow = "Menu";
     void ChangeWindow(string window)
     {
-        if (window == "Main")
-            currentPos = new Vector3(0, 1, -10);
-        else currentPos = new Vector3(0, 1, 100);
+        //if (window == "Main")
+        //    currentPos = new Vector3(0, 1, -10);
+        //else currentPos = new Vector3(0, 1, 100);
 
         windows[currentWindow].AddToClassList("hide-current-menu");
         currentWindow = window;

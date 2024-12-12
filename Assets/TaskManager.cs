@@ -105,6 +105,7 @@ public class TaskManager : MonoBehaviour
             tasks.Add(new TaskObject());
 
         VisualElement root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
+        Invoke("VisibleUI", 1);
 
         UI_TaskListContainer = root.Q<VisualElement>("TaskListContainer");
 
@@ -160,6 +161,13 @@ public class TaskManager : MonoBehaviour
         Label UI_Money_Label = root.Q<Label>("Money");
         UI_Money_Label.text = "$" + PlayerPrefs.GetInt("Money").ToString();
         OnMoneyChanged += delegate { UI_Money_Label.text = $"${PlayerPrefs.GetInt("Money")}"; };
+    }
+
+    void VisibleUI()
+    {
+        VisualElement root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
+        foreach (VisualElement child in root.Children())
+            child.RemoveFromClassList("hidden-ui");
     }
 
     private void Update()
