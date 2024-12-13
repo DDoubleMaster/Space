@@ -24,7 +24,7 @@ public class AsteroidSpawner : MonoBehaviour
         InvokeRepeating("SpawnAsteroid", time: spawnTimeout, repeatRate: spawnInterval);
     }
 
-	private void Update()
+	private void FixedUpdate()
 	{
         Vector3 pos = transform.position / 100;
         Vector3 noise;

@@ -178,10 +178,14 @@ public class TaskManager : MonoBehaviour
             currentTask.LaunchTask();
 
         if(currentTask == null && UI_currentTask.style.display == DisplayStyle.Flex)
-			UI_currentTask.style.display = DisplayStyle.None;
+        {
+            UI_currentTask.style.display = DisplayStyle.None;
+            UI_taskListView.style.display = DisplayStyle.Flex;
+        }
 		else if (currentTask != null && UI_currentTask.style.display == DisplayStyle.None)
         {
             UI_currentTask.style.display = DisplayStyle.Flex;
+            UI_taskListView.style.display = DisplayStyle.None;
 			UI_currentTask.Q<Label>("Type").text = currentTask.Type.ToString();
             UI_currentTask.Q<Label>("Complexity").text = currentTask.Complexity.ToString();
             UI_currentTask.Q<Label>("Award").text = currentTask.Award.ToString();

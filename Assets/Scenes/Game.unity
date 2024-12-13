@@ -186,35 +186,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2565799524663305807, guid: a28fb6d0ce17a4e4aadd80e3b6e8dd5e,
-        type: 3}
-      propertyPath: asteroidsPrefab.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2565799524663305807, guid: a28fb6d0ce17a4e4aadd80e3b6e8dd5e,
-        type: 3}
-      propertyPath: asteroidsPrefab.Array.data[0]
-      value: 
-      objectReference: {fileID: 1750675984127619444, guid: 97c8cd6a0262d024398c0b4d36024203,
-        type: 3}
-    - target: {fileID: 2565799524663305807, guid: a28fb6d0ce17a4e4aadd80e3b6e8dd5e,
-        type: 3}
-      propertyPath: asteroidsPrefab.Array.data[1]
-      value: 
-      objectReference: {fileID: 1750675984127619444, guid: e41309b7bc41c2d48a5ed15e3bc8c868,
-        type: 3}
-    - target: {fileID: 2565799524663305807, guid: a28fb6d0ce17a4e4aadd80e3b6e8dd5e,
-        type: 3}
-      propertyPath: asteroidsPrefab.Array.data[2]
-      value: 
-      objectReference: {fileID: 1750675984127619444, guid: 1c649495f7c52d4469a832b95b9328d2,
-        type: 3}
-    - target: {fileID: 2565799524663305807, guid: a28fb6d0ce17a4e4aadd80e3b6e8dd5e,
-        type: 3}
-      propertyPath: asteroidsPrefab.Array.data[3]
-      value: 
-      objectReference: {fileID: 1750675984127619444, guid: a7dedb0a45aa45c4d967cca5f0c4c8a4,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -10,7 +10,8 @@
 }
 
 .hide-current-window {
-    translate: 100% 0;
+    opacity: 0;
+    display: none;
 }
 
 .button {

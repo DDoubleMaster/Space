@@ -69,8 +69,11 @@ MonoBehaviour:
   spawnRadius: 50
   spawnInterval: 0.01
   spawnTimeout: 2
-  asteroidPrefab: {fileID: 7716146822370196251, guid: 97c8cd6a0262d024398c0b4d36024203,
-    type: 3}
+  asteroidsPrefab:
+  - {fileID: 1750675984127619444, guid: 97c8cd6a0262d024398c0b4d36024203, type: 3}
+  - {fileID: 1750675984127619444, guid: e41309b7bc41c2d48a5ed15e3bc8c868, type: 3}
+  - {fileID: 1750675984127619444, guid: 1c649495f7c52d4469a832b95b9328d2, type: 3}
+  - {fileID: 1750675984127619444, guid: a7dedb0a45aa45c4d967cca5f0c4c8a4, type: 3}
 --- !u!65 &155722995
 BoxCollider:
   m_ObjectHideFlags: 0
