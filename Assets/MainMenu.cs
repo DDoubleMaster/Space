@@ -56,9 +56,9 @@ public class MainMenu : MonoBehaviour
         //    currentPos = new Vector3(0, 1, -10);
         //else currentPos = new Vector3(0, 1, 100);
 
-        windows[currentWindow].AddToClassList("hide-current-menu");
+        windows[currentWindow].AddToClassList("hide-current-window");
         currentWindow = window;
-        windows[currentWindow].RemoveFromClassList("hide-current-menu");
+        windows[currentWindow].RemoveFromClassList("hide-current-window");
     }
 
     // Update is called once per frame
