@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI%20Toolkit/Style.uss?fileID=7433441132597879392&amp;guid=7c88507385743c94a84395b56297dd1d&amp;type=3#Style" />
+    <ui:VisualElement name="Menu" class="hide-current-window" style="transition-duration: 1s; transition-timing-function: ease-in-out-bounce; width: 100%; height: 100%; position: absolute;">
+        <ui:VisualElement style="flex-grow: 1; width: 30%; align-items: center; align-self: flex-end; justify-content: center;">
+            <ui:Label tabindex="-1" text="Space" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 100px; width: 100%; -unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 45px; -unity-font-style: bold; -unity-font: initial; text-shadow: 2.5px 0.6px 0 rgb(0, 0, 0);" />
+            <ui:VisualElement style="flex-grow: 1; align-self: flex-end; width: 100%; justify-content: center; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; height: auto; align-items: center;">
+                <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayButton" class="button" style="width: 80%;" />
+                <ui:Button text="Setting" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingButton" class="button" style="width: 80%;" />
+                <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="button" style="width: 80%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Setting" class="hide-current-window" style="transition-duration: 1s; transition-timing-function: ease-in-out-bounce; position: absolute; width: 100%; height: 100%;">
+        <ui:Label tabindex="-1" text="¯\_(ツ)_/¯" parse-escape-sequences="true" display-tooltip-when-elided="true" style="width: 100%; height: 100%; -unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 150px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Play" class="hide-current-window" style="transition-duration: 1s; transition-timing-function: ease-in-out-bounce; position: absolute; width: 100%; height: 100%;">
+        <ui:VisualElement style="flex-grow: 1; width: 30%; align-items: center; align-self: flex-end; justify-content: center;">
+            <ui:Label tabindex="-1" text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 100px; width: 100%; -unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 45px; -unity-font-style: bold; -unity-font: initial; text-shadow: 2.5px 0.6px 0 rgb(0, 0, 0);" />
+            <ui:VisualElement style="flex-grow: 1; align-self: flex-end; width: 100%; justify-content: center; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; height: auto; align-items: center;">
+                <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayButton" class="button" style="width: 80%;" />
+                <ui:Button text="Setting" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingButton" class="button" style="width: 80%;" />
+                <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="button" style="width: 80%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

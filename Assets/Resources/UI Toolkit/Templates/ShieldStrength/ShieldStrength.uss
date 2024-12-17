@@ -1,0 +1,23 @@
+#ShieldStrength #unity-progress-bar {
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+#ShieldStrength .unity-progress-bar__background {
+    background-color: rgb(63, 63, 63);
+}
+
+#ShieldStrength .unity-progress-bar__progress {
+    background-color: rgb(255, 164, 0);
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out-back;
+}
+
+#ShieldStrength .unity-progress-bar__title-container {
+}
+
+#ShieldStrength .unity-progress-bar__title {
+    height: 100%;
+    font-size: 100%;
+}
