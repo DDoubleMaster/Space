@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int shieldStrenght;
     [SerializeField] float shieldRegeniration;
 
+    TaskManager taskManager;
+
     // Current Shield
     float currentShield;
 
@@ -20,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
+
         //
         VisualElement root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
         UI_shieldStrength = root.Q<ProgressBar>("ShieldStrength");
@@ -45,6 +49,7 @@ public class PlayerController : MonoBehaviour
 		transform.Translate(transform.forward * speed * Time.deltaTime, Space.World);
         transform.Rotate(new Vector3(-Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal")), manageAbility * Time.deltaTime);
         // return velocity to normal 
+        _rBody.linearVelocity = Vector3.MoveTowards(_rBody.linearVelocity, Vector3.zero, Time.deltaTime / 10);
         _rBody.angularVelocity = Vector3.MoveTowards(_rBody.angularVelocity, Vector3.zero, Time.deltaTime / 10);
         #endregion
 
@@ -52,12 +57,7 @@ public class PlayerController : MonoBehaviour
         currentShield = Mathf.MoveTowards(currentShield, shieldStrenght, shieldRegeniration * Time.deltaTime);
 
         if (currentShield <= 0)
-            Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        Application.Quit();
+            taskManager.ExitToMain();
     }
 
     private void OnCollisionEnter(Collision collision)

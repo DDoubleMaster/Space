@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class TaskManager : MonoBehaviour
@@ -92,6 +93,8 @@ public class TaskManager : MonoBehaviour
 
     [SerializeField] VisualTreeAsset taskStyle;
 
+    VisualElement root;
+
     public ListView UI_taskListView;
     VisualElement UI_currentTask;
 
@@ -103,7 +106,20 @@ public class TaskManager : MonoBehaviour
         for (int i = 0; i < 10; i++)
             tasks.Add(new TaskObject());
 
+<<<<<<< Updated upstream
         VisualElement root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
+=======
+        root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
+        Invoke("VisibleUI", 1);
+
+        #region Pause Menu Buttons
+        VisualElement pauseMenuContainer = root.Q<VisualElement>("PauseMenuContainer");
+
+        pauseMenuContainer.Q<Button>("Play").clicked += delegate { Pause(); };
+        pauseMenuContainer.Q<Button>("Setting").clicked += delegate { };
+        pauseMenuContainer.Q<Button>("Exit").clicked += delegate { ExitToMain(); };
+        #endregion
+>>>>>>> Stashed changes
 
         UI_currentTask = root.Q<VisualElement>("CurrentTaskStyle");
         UI_currentTask.style.display = DisplayStyle.None;
@@ -159,11 +175,54 @@ public class TaskManager : MonoBehaviour
         OnMoneyChanged += delegate { UI_Money_Label.text = $"${PlayerPrefs.GetInt("Money")}"; };
     }
 
-    float currentTimeScale = 1;
+<<<<<<< Updated upstream
+=======
+    void VisibleUI()
+    {
+        root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
+        foreach (VisualElement child in root.Children())
+            child.RemoveFromClassList("hidden-ui");
+    }
+
+    void HideUI()
+    {
+        root = GameObject.Find("UIDocument").GetComponent<UIDocument>().rootVisualElement;
+        foreach (VisualElement child in root.Children())
+            child.AddToClassList("hidden-ui");
+
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
+            Pause();
+        Time.timeScale = Mathf.MoveTowards(Time.timeScale, currentTimeScale, Time.deltaTime * 5);
+
+        if (currentTask != null)
+            currentTask.LaunchTask();
+
+        if(currentTask == null && UI_currentTask.style.display == DisplayStyle.Flex)
         {
+            UI_currentTask.style.display = DisplayStyle.None;
+            UI_taskListView.style.display = DisplayStyle.Flex;
+        }
+		else if (currentTask != null && UI_currentTask.style.display == DisplayStyle.None)
+        {
+            UI_currentTask.style.display = DisplayStyle.Flex;
+            UI_taskListView.style.display = DisplayStyle.None;
+			UI_currentTask.Q<Label>("Type").text = currentTask.Type.ToString();
+            UI_currentTask.Q<Label>("Complexity").text = currentTask.Complexity.ToString();
+            UI_currentTask.Q<Label>("Award").text = currentTask.Award.ToString();
+		}
+	}
+
+>>>>>>> Stashed changes
+    float currentTimeScale = 1;
+    private void Update()
+    {
+        if (currentTimeScale == 0)
+        {
+<<<<<<< Updated upstream
             if (currentTimeScale == 0)
             {
                 currentTimeScale = 1;
@@ -187,6 +246,27 @@ public class TaskManager : MonoBehaviour
             UI_currentTask.Q<Label>("Award").text = currentTask.Award.ToString();
 		}
 	}
+=======
+            currentTimeScale = 1;
+            Time.timeScale += 0.05f;
+            root.Q<VisualElement>("PauseMenuContainer").AddToClassList("pause-menu-hidden");
+            root.Q<VisualElement>("TaskListContainer").AddToClassList("task-menu-hidden");
+        }
+        else
+        {
+            currentTimeScale = 0;
+            root.Q<VisualElement>("PauseMenuContainer").RemoveFromClassList("pause-menu-hidden");
+            root.Q<VisualElement>("TaskListContainer").RemoveFromClassList("task-menu-hidden");
+        }
+    }
+
+    public void ExitToMain()
+    {
+        GameObject.Find("CameraParent").GetComponent<CameraMove>().toMain = true;
+        HideUI();
+        Pause();
+    }
+>>>>>>> Stashed changes
 
     public event System.Action OnMoneyChanged;
     public void AddMoney(int amount)
