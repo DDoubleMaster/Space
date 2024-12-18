@@ -60,11 +60,6 @@ public class PlayerController : MonoBehaviour
             taskManager.ExitToMain();
     }
 
-    private void OnDestroy()
-    {
-        Application.Quit();
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         // damage to Shield
